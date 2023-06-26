@@ -64,6 +64,16 @@ Remove a directory named foo (be very careful with this one)
 rm -rf /home/foo
 ```
 
+Find out which version of Linux is running (run as root inside the container)
+```console
+cat /etc/*-release
+```
+
+Find out what user is running when entering the Docker container
+```console
+whoami
+```
+
 ## TSQL
 
 List databases on MSSQL Server
