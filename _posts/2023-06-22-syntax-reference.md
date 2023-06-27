@@ -45,6 +45,12 @@ sudo docker exec -it sql1 /opt/mssql-tools/bin/sqlcmd \
 /opt/mssql-tools/bin/sqlcmd -S localhost -U SA
 ```
 
+8. Copy files from host system to Docker container. Specifically I used Powershell to issue these commands to copy .mdf, .ndf and .ldf files over so that I can have a real database to play with. You'll want to change the container name and the path to your liking.
+```console
+cd /Users/<user Windows id/name>/Downloads/<whatever directory you created>
+docker cp . <your container name>:/var/opt/mssql/data/
+```
+
 Bash script to stop and remove a container named sql1
 ```console
 sudo docker stop sql1
@@ -89,4 +95,17 @@ FROM
 Creates a database called TestDB
 ```tsql
 CREATE DATABASE TestDB;
+```
+
+Example of attaching database files
+```tsql
+CREATE DATABASE StackOverflow 
+ON 
+  (name = so1, filename = N'/var/opt/mssql/data/StackOverflow2013_1.mdf'),
+  (name = so2, filename = N'/var/opt/mssql/data/StackOverflow2013_2.ndf'),
+  (name = so3, filename = N'/var/opt/mssql/data/StackOverflow2013_3.ndf'),
+  (name = so4, filename = N'/var/opt/mssql/data/StackOverflow2013_4.ndf')
+LOG ON
+  (name = solog, filename = N'/var/opt/mssql/data/StackOverflow2013_log.ldf')
+FOR ATTACH;
 ```
