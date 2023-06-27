@@ -80,6 +80,13 @@ Find out what user is running when entering the Docker container
 whoami
 ```
 
+Find any file with specific name, file with an extention or any file not in a specified file path. The last still looks at that path but does not search in it.
+```console
+find . -name charges.sql
+find . -name "*.js"
+find -name "*.sql" -not -path "/mnt/c"
+```
+
 ## TSQL
 
 List databases on MSSQL Server
