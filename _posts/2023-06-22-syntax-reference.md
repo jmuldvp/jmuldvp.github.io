@@ -51,6 +51,11 @@ cd /Users/<user Windows id/name>/Downloads/<whatever directory you created>
 docker cp . <your container name>:/var/opt/mssql/data/
 ```
 
+9. Find out how much space Docker is taking up. Issue this command from the host.
+```console
+docker system df
+```
+
 Bash script to stop and remove a container named sql1
 ```console
 sudo docker stop sql1
