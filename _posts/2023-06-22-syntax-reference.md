@@ -56,6 +56,11 @@ docker cp . <your container name>:/var/opt/mssql/data/
 docker system df
 ```
 
+10. Getting Docker container info. The container or containers have to be running to get information back. Columns will be *CONTAINER ID*, *IMAGE*, *COMMAND*, *CREATED*, *STATUS*, *PORTS* and *NAMES*
+```console
+docker container ls
+```
+
 Bash script to stop and remove a container named sql1
 ```console
 sudo docker stop sql1
